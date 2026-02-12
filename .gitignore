@@ -1,0 +1,13 @@
+__pycache__
+*.pyc
+
+
+# Image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+test
+
+#venv
+fdvenv
