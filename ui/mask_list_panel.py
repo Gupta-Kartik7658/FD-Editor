@@ -11,6 +11,7 @@ class MaskListPanel(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.masks = []
+        self.item_widgets = {}
         
         layout = QVBoxLayout(self)
         layout.setSpacing(5)
@@ -38,16 +39,28 @@ class MaskListPanel(QWidget):
         
         self.list_widget.addItem(item)
         self.list_widget.setItemWidget(item, widget)
+        
+        self.item_widgets[mask] = (item, widget)
     
     def remove_mask(self, mask):
         if mask in self.masks:
             index = self.masks.index(mask)
             self.masks.remove(mask)
             self.list_widget.takeItem(index)
+            if mask in self.item_widgets:
+                del self.item_widgets[mask]
     
     def clear_masks(self):
         self.masks.clear()
         self.list_widget.clear()
+        self.item_widgets.clear()
+    
+    def update_mask_display(self, mask):
+        if mask in self.item_widgets:
+            item, old_widget = self.item_widgets[mask]
+            new_widget = self._create_mask_item_widget(mask)
+            self.list_widget.setItemWidget(item, new_widget)
+            self.item_widgets[mask] = (item, new_widget)
     
     def _create_mask_item_widget(self, mask):
         widget = QWidget()
@@ -59,7 +72,8 @@ class MaskListPanel(QWidget):
         checkbox.stateChanged.connect(lambda state: self.mask_toggled.emit(mask, state == Qt.Checked))
         layout.addWidget(checkbox)
         
-        label = QLabel(f"{mask.mask_type.value}")
+        mode_indicator = "🔴" if mask.mode.value == "Remove" else "🟢"
+        label = QLabel(f"{mode_indicator} {mask.mask_type.value}")
         layout.addWidget(label)
         
         layout.addStretch()
