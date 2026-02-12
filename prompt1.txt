@@ -1,0 +1,242 @@
+You are helping me build a production-quality desktop application in Python.
+
+The project is:
+
+Fourier Domain Interactive Image Editor (FD-Editor)
+
+I have already defined a complete SRS for this system which i am attaching.
+
+I have already installed the following exact dependencies (do NOT change versions and do NOT add new libraries unless absolutely necessary):
+
+PySide6==6.6.1
+numpy==1.26.4
+opencv-python==4.9.0.80
+Pillow==10.2.0
+matplotlib==3.8.2
+
+You must assume these are already installed and working.
+
+🔷 Project Overview
+
+This is a fully UI-based frequency-domain image editor.
+
+The application must:
+
+Load an image
+
+Convert to grayscale
+
+Compute FFT (once)
+
+Display:
+
+Spatial domain image
+
+Frequency amplitude spectrum (log scaled)
+
+Allow user to create multiple masks:
+
+Rectangle mask
+
+Circle mask
+
+Free draw mask
+
+Each mask must:
+
+Be independently stored
+
+Be toggleable
+
+Have its own intensity scaling slider
+
+User modifies amplitude only (not phase)
+
+Spatial image updates in real-time
+
+Conjugate symmetry must be enforced automatically
+
+Multiple masks must combine correctly
+
+All interactions must be GUI-based.
+NO numeric text inputs.
+
+🔷 Important Architectural Constraints
+
+Use modular architecture.
+
+Separate:
+
+UI layer
+
+Mask management layer
+
+FFT processing layer
+
+Rendering utilities
+
+Use NumPy vectorized operations wherever possible.
+
+Only modify amplitude matrix for updates.
+
+Use library functions as much as possible (no manual reimplementation of FFT, etc).
+
+Avoid inefficient Python loops.
+
+Keep UI responsive.
+
+Use Qt signals/slots properly.
+
+Avoid global variables.
+
+🔷 Development Workflow Requirements
+
+Before writing any code:
+
+First output a complete directory structure.
+
+Then create files one by one.
+
+At the top of each file, clearly indicate:
+
+File: path/to/file.py
+
+Do NOT generate markdown files unless I explicitly ask.
+
+Do NOT wrap code in markdown fences.
+
+Only provide raw Python code.
+
+If special run commands are needed, provide them separately in chat text (not inside code files).
+
+Keep code clean, readable, and professional.
+
+Add minimal but useful comments.
+
+Follow clean OOP structure.
+
+🔷 Suggested High-Level Architecture (You May Improve It)
+
+app/
+├── main.py
+├── ui/
+│ ├── main_window.py
+│ ├── image_view.py
+│
+├── core/
+│ ├── fft_engine.py
+│ ├── mask.py
+│ ├── mask_manager.py
+│
+├── utils/
+│ ├── image_utils.py
+│
+└── resources/
+
+You may improve structure if needed, but explain why.
+
+🔷 Mask System Requirements
+
+Each mask object must:
+
+Store its geometry
+
+Store intensity scaling value
+
+Store enabled/disabled state
+
+Generate its own mask matrix
+
+Automatically apply conjugate symmetry
+
+Support update when slider changes
+
+MaskManager must:
+
+Maintain list of masks
+
+Combine masks efficiently
+
+Recompute modified amplitude using vectorized operations
+
+Emit signal to update spatial view
+
+🔷 Performance Requirements
+
+512x512 image should update under 200ms
+
+Avoid recomputing FFT
+
+Avoid recomputing phase
+
+Only recompute:
+A' = A * combined_mask
+then inverse FFT
+
+🔷 UI Requirements
+
+Side-by-side image display
+
+Tool selection buttons
+
+Intensity slider per selected mask
+
+Mask list panel (optional but recommended)
+
+Reset button
+
+Save button
+
+All must use PySide6 best practices.
+
+🔷 Coding Style
+
+Use type hints
+
+Use classes
+
+Avoid unnecessary abstraction
+
+Keep logic readable
+
+Do not over-engineer
+
+Optimize for clarity + performance
+
+🔷 What I Want From You
+
+Step 1:
+Give directory structure.
+
+Step 2:
+Create minimal runnable skeleton.
+
+Step 3:
+Implement FFT engine.
+
+Step 4:
+Implement image display.
+
+Step 5:
+Implement mask system.
+
+Step 6:
+Implement interaction.
+
+Proceed incrementally and wait for my confirmation before major structural changes.
+
+🔷 Important
+
+Do NOT:
+
+Generate markdown documentation files
+
+Create unnecessary text files
+
+Add extra libraries
+
+Use experimental features
+
+You are building a clean, optimized desktop application.
+
+Start by giving me the directory structure.
