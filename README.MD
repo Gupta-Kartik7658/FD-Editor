@@ -2,11 +2,9 @@
 
 A real-time frequency-domain image editing application that allows direct manipulation of image frequency components through an intuitive visual interface.
 
-[Python](https://img.shields.io/badge/python-3.8%2B-blue)
-
-[PySide6](https://img.shields.io/badge/PySide6-6.6.1-green)
-
-[License](https://img.shields.io/badge/license-MIT-blue)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![PySide6](https://img.shields.io/badge/PySide6-6.6.1-green)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 ---
 
@@ -125,3 +123,4 @@ python main.py
 ## License
 
 Licensed under the MIT License.
+
