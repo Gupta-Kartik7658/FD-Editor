@@ -66,7 +66,7 @@ FD-Editor enables users to interactively edit images in the frequency domain by 
 ### 1. Clone Repository
 
 ```bash
-git clone <https://github.com/yourusername/fd-editor.git>
+git clone https://github.com/Gupta-Kartik7658/FD-Editor.git
 cd fd-editor 
 ```
 
@@ -123,4 +123,5 @@ python main.py
 ## License
 
 Licensed under the MIT License.
+
 
