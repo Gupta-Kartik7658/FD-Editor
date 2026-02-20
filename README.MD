@@ -81,7 +81,7 @@ On Linux/MacOS
 sudo apt update 
 sudo apt install python3-venv
 python3 -m venv <venv_name>
-source /<venv_name>/bin/activate 
+source ./<venv_name>/bin/activate 
 ```
 
 ### 3. Install all the dependencies
@@ -129,6 +129,7 @@ python main.py
 ## License
 
 Licensed under the MIT License.
+
 
 
 
